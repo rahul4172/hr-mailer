@@ -1,0 +1,390 @@
+/* Lamborghini Component Architecture */
+
+/* =========================================
+   Buttons (Zero Radius, Sharp Edges)
+   ========================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  height: 48px;
+  border-radius: 0px !important;
+  font-weight: 500;
+  font-size: var(--text-body);
+  text-transform: uppercase;
+  letter-spacing: 0.14px;
+  cursor: pointer;
+  transition: all var(--spring-swift);
+  border: none;
+  outline: none;
+  font-family: var(--font-heading);
+  box-sizing: border-box;
+  text-decoration: none;
+  white-space: nowrap;
+  gap: 8px;
+}
+
+.btn:active {
+  transform: none; /* No scaling in Lambo design */
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-sm {
+  height: 32px;
+  padding: 0 12px;
+  font-size: var(--text-caption);
+  letter-spacing: 0.13px;
+}
+
+.btn-lg {
+  height: 56px;
+  padding: 0 24px;
+  font-size: var(--text-large);
+}
+
+/* Primary Button - Lamborghini Gold */
+.btn-primary, .btn-accent {
+  background: var(--accent-base);
+  color: #000000;
+  border: none;
+}
+.btn-primary:hover, .btn-accent:hover {
+  background: var(--accent-hover);
+}
+
+/* Secondary Button - Transparent Ghost */
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+.btn-secondary:hover {
+  background: var(--color-teal-action);
+  border-color: var(--color-teal-action);
+  color: #FFFFFF;
+}
+
+/* Action/Neutral Button */
+.btn-neutral {
+  background: var(--text-disabled);
+  color: #202020;
+}
+.btn-neutral:hover {
+  background: var(--text-muted);
+}
+
+/* Danger Button */
+.btn-danger {
+  background: transparent;
+  color: var(--color-error);
+  border: 1px solid var(--color-error);
+}
+.btn-danger:hover {
+  background: var(--color-error);
+  color: #FFFFFF;
+}
+
+/* =========================================
+   Forms & Inputs
+   ========================================= */
+.form-label {
+  display: block;
+  font-size: var(--text-caption);
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2);
+  text-transform: uppercase;
+  letter-spacing: -0.42px;
+}
+
+.glass-input, .lambo-input {
+  width: 100%;
+  height: 48px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 0px !important;
+  padding: 0 16px;
+  color: var(--text-primary);
+  font-size: var(--text-body);
+  transition: all var(--spring-swift);
+  box-sizing: border-box;
+  font-family: var(--font-family);
+}
+textarea.glass-input, textarea.lambo-input {
+  height: auto;
+  padding: 16px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.glass-input:focus, .lambo-input:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  background: var(--bg-surface-hover);
+}
+
+.glass-input::placeholder, .lambo-input::placeholder {
+  color: var(--text-muted);
+}
+.glass-input:disabled, .lambo-input:disabled {
+  background: var(--bg-surface-active);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+/* =========================================
+   Cards & Surfaces
+   ========================================= */
+.glass-card, .premium-card {
+  background: var(--bg-surface-hover); /* Charcoal #202020 */
+  border-radius: 0px !important;
+  padding: var(--space-8);
+  transition: all var(--spring-swift);
+  position: relative;
+  overflow: hidden;
+  border: none;
+  box-shadow: none;
+}
+
+/* Bottom border separators for sections */
+.section-divider {
+  border-bottom: 1px solid var(--bg-surface-hover);
+}
+
+/* High-end hover state */
+.interactive-card:hover {
+  background: var(--bg-surface-active); /* Slightly lighter surface for depth */
+}
+
+/* =========================================
+   Badges / Tags
+   ========================================= */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 8px;
+  height: 24px;
+  border-radius: 2px !important; /* Extremely subtle */
+  font-size: var(--text-micro);
+  font-weight: 500;
+  letter-spacing: 0.225px;
+  text-transform: uppercase;
+  background: var(--text-disabled); /* #969696 */
+  color: #FFFFFF;
+}
+.badge-success { background: var(--color-success); color: #000; }
+.badge-warning { background: var(--color-warning); color: #000; }
+.badge-error { background: var(--color-error); color: #FFF; }
+.badge-info { background: var(--color-info); color: #000; }
+
+/* =========================================
+   Chips (Used in composer attachments)
+   ========================================= */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  height: 32px;
+  border-radius: 0px !important;
+  font-size: var(--text-caption);
+  font-weight: 600;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  transition: all var(--spring-swift);
+  text-transform: uppercase;
+}
+.chip:hover {
+  background: var(--bg-surface-hover);
+}
+.chip-valid { border-color: var(--color-success); }
+.chip-invalid { border-color: var(--color-error); }
+
+.chip-remove-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 2px;
+  margin-right: -4px;
+  display: flex;
+  align-items: center;
+}
+.chip-remove-btn:hover {
+  color: var(--color-error);
+}
+
+/* =========================================
+   Modals
+   ========================================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-overlay-70);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--spring-swift);
+}
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+.modal-content {
+  background: var(--bg-surface-hover); /* #202020 */
+  border-radius: 0px !important;
+  padding: var(--space-8);
+  width: 100%;
+  max-width: 500px;
+  transform: translateY(20px);
+  transition: all var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  border: 1px solid var(--border-strong);
+}
+.modal-overlay.active .modal-content {
+  transform: translateY(0);
+}
+
+/* =========================================
+   Sonner-Style Toasts
+   ========================================= */
+.toast-stack {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 10000;
+  width: 356px;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
+
+.sonner-toast {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  background: var(--bg-surface-hover);
+  border-radius: 0px !important;
+  border: 1px solid var(--border-strong);
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  transition: all var(--spring-bouncy);
+  transform-origin: bottom right;
+  pointer-events: auto;
+}
+
+.sonner-toast-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sonner-toast-content {
+  flex: 1;
+}
+
+.sonner-toast-message {
+  font-size: var(--text-body);
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.4;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.sonner-toast-close {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  margin-top: -2px;
+  margin-right: -4px;
+  transition: all var(--spring-swift);
+}
+.sonner-toast-close:hover {
+  color: var(--text-primary);
+}
+
+/* =========================================
+   Skeleton Loaders
+   ========================================= */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-surface) 25%,
+    var(--bg-surface-active) 50%,
+    var(--bg-surface) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite ease-in-out;
+  border-radius: 0px !important;
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* =========================================
+   Page Headers & Empty States
+   ========================================= */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-12);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.page-title {
+  font-size: var(--text-h2);
+  color: var(--text-primary);
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+
+/* High-end empty states */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-16) var(--space-4);
+  text-align: center;
+  border-radius: 0px !important;
+  background: var(--bg-surface);
+}
+.empty-state i {
+  color: var(--text-muted);
+  margin-bottom: var(--space-6);
+  width: 64px;
+  height: 64px;
+}
+.empty-state h3 {
+  font-size: var(--text-h4);
+  margin-bottom: var(--space-2);
+  text-transform: uppercase;
+}
+.empty-state p {
+  color: var(--text-secondary);
+  font-size: var(--text-body);
+  max-width: 400px;
+  margin-bottom: var(--space-8);
+}

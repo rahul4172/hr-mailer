@@ -1,0 +1,32 @@
+# Render Deployment Blueprint
+services:
+  - type: web
+    name: hr-mailer-pro
+    env: node
+    region: oregon
+    plan: starter
+    buildCommand: npm run setup
+    startCommand: npm start
+    disk:
+      name: hrmailer-data
+      mountPath: /app/database
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: ENABLE_MOCK_AUTH
+        value: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: GOOGLE_CALLBACK_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: ENCRYPTION_KEY
+        generateValue: true

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>HR Mailer Pro - Premium Outreach Platform</title>
+  
+  <!-- SEO & Social Meta Tags -->
+  <meta name="description" content="Production-ready, mobile-first cold email campaign platform powered by Google OAuth 2.0 and official Gmail API.">
+  <meta name="theme-color" content="#08090c">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS Design System -->
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/app.css?v=2">
+
+  <!-- Third Party Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Global App Loader -->
+  <div id="global-loader" style="position: fixed; inset: 0; background: var(--bg-app); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.4s ease, visibility 0.4s;">
+    <div style="width: 48px; height: 48px; border-radius: 12px; background: var(--bg-surface-active); border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; box-shadow: var(--ring-border);">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-primary); opacity: 0.8;"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+    </div>
+    <div style="font-family: var(--font-heading); font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; letter-spacing: -0.02em;">HR Mailer</div>
+    <div style="display: flex; gap: 6px; align-items: center; color: var(--text-muted); font-size: 11px; text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em;">
+      <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--accent-base); animation: pulse 1.5s infinite;"></span>
+      Waking up workspace...
+    </div>
+  </div>
+
+  <style>
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .4; transform: scale(0.9); }
+    }
+  </style>
+
+  <!-- Sonner-Style Toast Notification Container -->
+  <div id="toast-container" class="toast-stack"></div>
+
+  <!-- Application Shell (Lamborghini Style) -->
+  <header class="lambo-header" id="lambo-header">
+    <div class="lambo-header-left">
+      <button class="lambo-menu-btn" id="btn-toggle-menu">
+        <i data-lucide="menu" style="width:24px; height:24px;"></i>
+        <span>MENU</span>
+      </button>
+    </div>
+    
+    <div class="lambo-header-center">
+      <a href="#dashboard" class="brand-logo" style="display:flex; align-items:center; gap:0.5rem; text-decoration:none; color:var(--text-primary);">
+        <i data-lucide="mail" style="width:28px; height:28px; color:var(--text-primary);"></i> 
+        <span style="font-weight:400; text-transform:uppercase; letter-spacing:0.1em; font-size:1.25rem;">HR MAILER</span>
+      </a>
+    </div>
+
+    <div class="lambo-header-right">
+      <button class="lambo-icon-btn" onclick="window.commandPalette.open()">
+        <i data-lucide="search" style="width:24px; height:24px;"></i>
+      </button>
+      <button class="lambo-icon-btn" id="btn-logout">
+        <i data-lucide="log-out" style="width:24px; height:24px;"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Off-canvas Sidebar (Drawer) -->
+  <aside class="lambo-sidebar" id="desktop-sidebar">
+    <div class="lambo-sidebar-header">
+      <button class="lambo-icon-btn" id="btn-close-menu">
+        <i data-lucide="x" style="width:28px; height:28px;"></i>
+      </button>
+    </div>
+    <nav class="lambo-sidebar-nav">
+      <div class="sidebar-item" data-route="dashboard"><a href="#dashboard">Dashboard</a></div>
+      <div class="sidebar-item" data-route="campaign"><a href="#campaign">New Campaign</a></div>
+      <div class="sidebar-item" data-route="history"><a href="#history">Timeline</a></div>
+      <div class="sidebar-item" data-route="reports"><a href="#reports">Analytics</a></div>
+      <div class="sidebar-item" data-route="settings"><a href="#settings">Settings</a></div>
+    </nav>
+    <div class="lambo-sidebar-footer">
+      <div class="sidebar-user-email" id="sidebar-user-email" style="text-transform:uppercase; font-size:14px; letter-spacing:0.1em; color:var(--text-muted);">user@workspace.com</div>
+    </div>
+  </aside>
+
+  <!-- Main Workspace -->
+  <main class="main-workspace">
+    <div id="view-landing" class="page-view"></div>
+    <div id="view-login" class="page-view"></div>
+    <div id="view-dashboard" class="page-view"></div>
+    <div id="view-campaign" class="page-view"></div>
+    <div id="view-composer" class="page-view"></div>
+    <div id="view-attachments" class="page-view"></div>
+    <div id="view-progress" class="page-view"></div>
+    <div id="view-history" class="page-view"></div>
+    <div id="view-reports" class="page-view"></div>
+    <div id="view-settings" class="page-view"></div>
+  </main>
+
+  <!-- JavaScript App Bundles -->
+  <script src="/js/config.js"></script>
+  <script src="/js/state.js"></script>
+  <script src="/js/utils.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/components/commandPalette.js"></script>
+  <script src="/js/components/toast.js"></script>
+  <script src="/js/components/modal.js"></script>
+  <script src="/js/components/skeleton.js"></script>
+  <script src="/js/views/landing.js"></script>
+  <script src="/js/views/login.js"></script>
+  <script src="/js/views/dashboard.js"></script>
+  <script src="/js/views/campaign.js"></script>
+  <script src="/js/views/composer.js"></script>
+  <script src="/js/views/attachments.js"></script>
+  <script src="/js/views/progress.js"></script>
+  <script src="/js/views/history.js"></script>
+  <script src="/js/views/reports.js"></script>
+  <script src="/js/views/settings.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

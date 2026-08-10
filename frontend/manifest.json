@@ -1,0 +1,21 @@
+{
+  "name": "HR Mailer Pro",
+  "short_name": "HRMailerPro",
+  "description": "High-Converting HR Outreach Platform powered by Google Gmail API",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090a0f",
+  "theme_color": "#090a0f",
+  "icons": [
+    {
+      "src": "https://api.dicebear.com/7.x/identicon/svg?seed=HRMailer",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "https://api.dicebear.com/7.x/identicon/svg?seed=HRMailer",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

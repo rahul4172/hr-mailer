@@ -1,0 +1,40 @@
+{
+  "name": "hr-mailer-pro",
+  "version": "1.0.0",
+  "description": "Production-ready, mobile-first email campaign platform powered by Google OAuth 2.0 and Gmail API",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js",
+    "setup": "npm install",
+    "build": "echo \"Build completed successfully\""
+  },
+  "keywords": [
+    "gmail-api",
+    "email-campaign",
+    "oauth2",
+    "hr-mailer",
+    "mobile-first",
+    "cybersecurity"
+  ],
+  "author": "Antigravity Senior Software Engineer",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "express-session": "^1.18.1",
+    "googleapis": "^144.0.0",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "pg": "^8.22.0",
+    "sqlite3": "^5.1.7",
+    "uuid": "^11.1.0",
+    "xlsx": "^0.18.5",
+    "xss": "^1.0.14"
+  }
+}

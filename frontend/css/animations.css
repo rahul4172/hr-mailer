@@ -1,0 +1,80 @@
+/* 60FPS Spring Physics Keyframes & Micro-Interactions */
+
+@keyframes springFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes springFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shakeWarning {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-4px); }
+  40%, 80% { transform: translateX(4px); }
+}
+
+@keyframes pulseEmerald {
+  0%, 100% { box-shadow: 0 0 12px hsla(var(--emerald-500), 0.3); }
+  50% { box-shadow: 0 0 28px hsla(var(--emerald-500), 0.7); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in {
+  animation: springFadeIn var(--spring-bouncy) forwards;
+}
+
+.animate-fade-up {
+  animation: springFadeInUp var(--spring-bouncy) forwards;
+  opacity: 0;
+}
+
+.animate-shake {
+  animation: shakeWarning 0.4s ease-in-out;
+}
+
+.pulse-indicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent-base);
+  animation: pulseEmerald 2s infinite;
+}
+
+/* Staggered animation delays for lists */
+.stagger-1 { animation-delay: 50ms; }
+.stagger-2 { animation-delay: 100ms; }
+.stagger-3 { animation-delay: 150ms; }
+.stagger-4 { animation-delay: 200ms; }
+.stagger-5 { animation-delay: 250ms; }
+
+/* Skeleton Shimmer Loading */
+.skeleton-shimmer {
+  background: linear-gradient(90deg, 
+    var(--bg-tertiary) 25%, 
+    var(--border-subtle) 50%, 
+    var(--bg-tertiary) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-sm);
+}
