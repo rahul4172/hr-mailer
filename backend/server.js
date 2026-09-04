@@ -10,6 +10,10 @@ const authController = require('./controllers/authController');
 const logger = require('./utils/logger');
 
 const app = express();
+
+// Trust reverse proxy (needed for Render / express-rate-limit)
+app.set('trust proxy', 1);
+
 const PORT = process.env.PORT || 5000;
 
 // Body Parsers & Cookie Parser
