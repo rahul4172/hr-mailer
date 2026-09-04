@@ -118,11 +118,11 @@ class SendingEngine {
       };
 
       const personalizedSubject = interpolateVariables(state.campaign.subject, variables);
-      let personalizedBody = interpolateVariables(state.campaign.template_body, variables);
+      let personalizedBody = interpolateVariables(state.campaign.template_body, variables).replace(/\r?\n/g, '<br>');
 
       // Append default signature if present
       if (state.campaign.signature) {
-        personalizedBody += `<br><br>${state.campaign.signature.replace(/\n/g, '<br>')}`;
+        personalizedBody += `<br><br>${state.campaign.signature.replace(/\r?\n/g, '<br>')}`;
       }
 
       // Store calculated subject & body
