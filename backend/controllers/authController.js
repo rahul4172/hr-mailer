@@ -119,7 +119,7 @@ async function googleCallback(req, res) {
     res.redirect('/#dashboard');
   } catch (error) {
     logger.error('[OAuth Callback Error]', { error: error.message });
-    res.redirect('/?error=oauth_failed');
+    res.redirect('/?error=oauth_failed&reason=' + encodeURIComponent(error.message));
   }
 }
 
