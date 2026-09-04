@@ -44,7 +44,7 @@ async function createCampaign(req, res) {
       WHERE user_id = ? AND created_at >= NOW() - INTERVAL '7 days'
     `).get(userId);
 
-    const pastValidCount = pastCampaigns.total || 0;
+    const pastValidCount = parseInt(pastCampaigns.total || 0, 10);
     const newValidCount = parsed.valid;
     const WEEKLY_LIMIT = 150;
 
@@ -236,16 +236,21 @@ async function getDashboardStats(req, res) {
     const totalFailed = await db.prepare('SELECT SUM(failed_count) as total FROM campaigns WHERE user_id = ?').get(userId);
     const activeCampaigns = await db.prepare("SELECT COUNT(*) as count FROM campaigns WHERE user_id = ? AND status = 'running'").get(userId);
 
+    const totalCampaignsVal = parseInt(totalCampaigns.count || 0, 10);
+    const totalSentVal = parseInt(totalEmailsSent.total || 0, 10);
+    const totalFailedVal = parseInt(totalFailed.total || 0, 10);
+    const activeRunningVal = parseInt(activeCampaigns.count || 0, 10);
+
     const recentCampaigns = await db.prepare('SELECT * FROM campaigns WHERE user_id = ? ORDER BY created_at DESC LIMIT 5').all(userId);
 
     res.json({
       status: 'success',
       stats: {
-        totalCampaigns: totalCampaigns.count || 0,
-        totalSent: totalEmailsSent.total || 0,
-        totalFailed: totalFailed.total || 0,
-        activeRunning: activeCampaigns.count || 0,
-        deliveryRate: (totalEmailsSent.total || 0) > 0 ? Math.round(((totalEmailsSent.total || 0) / ((totalEmailsSent.total || 0) + (totalFailed.total || 0))) * 100) : 100
+        totalCampaigns: totalCampaignsVal,
+        totalSent: totalSentVal,
+        totalFailed: totalFailedVal,
+        activeRunning: activeRunningVal,
+        deliveryRate: totalSentVal > 0 ? Math.round((totalSentVal / (totalSentVal + totalFailedVal)) * 100) : 100
       },
       recentCampaigns
     });
